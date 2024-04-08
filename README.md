@@ -1,27 +1,26 @@
 # FrontendDemo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+Esse é um projeto de demonstração desenvolvido em Angular 17.3.2, utilizando Angular Material.
 
-## Development server
+## Requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Node.js v20
+Angular CLI 17.3.2
+Acesso à internet (google fonts/ bootstrap)
 
-## Code scaffolding
+## Executar
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Execute `npm install` para instalar as dependências do projeto.
 
-## Build
+Execute `ng serve` para iniciar o servidor de desenvolvimento. Navegue até `http://localhost:4200/`. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos de origem
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Acesso
 
-## Running unit tests
+Para realizar o login, existem dois usuários cadastrados:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+email: john.doe@gmail.com
+senha: 1!JohnDoe
 
-## Running end-to-end tests
+email: jane.doe@gmail.com
+senha: 2!JaneDoe
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
