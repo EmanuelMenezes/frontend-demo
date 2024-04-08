@@ -1,1 +1,82 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$frontend-demo-primary: mat.define-palette(mat.$indigo-palette);
+$frontend-demo-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$frontend-demo-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$frontend-demo-theme: mat.define-light-theme((
+  color: (
+    primary: $frontend-demo-primary,
+    accent: $frontend-demo-accent,
+    warn: $frontend-demo-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($frontend-demo-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Montserrat", sans-serif }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0 0 !important;
+  line-height: 1;
+}
+
+.card{
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  border: none;
+}
+
+button[mat-raised-button]{
+  border-radius: 24px;
+  height: 48px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  padding: 0px 30px;
+}
+
+.info-box{
+  display: flex;
+  flex-direction: column;
+  label{
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #888;
+  }
+}
+
+.status-border{
+  border-left: 0.25rem solid #888;
+  &.completed{
+    border-left: 0.25rem solid #00c853;
+  }
+  &.prog{
+    border-left: 0.25rem solid #00a2ff;
+  }
+}

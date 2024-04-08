@@ -1,0 +1,124 @@
+<app-page title="Perfil" subtitle="Atualize seus dados">
+  <button mat-raised-button action (click)="saveProfile()" [disabled]="formProfile.invalid">Salvar</button>
+  <div body class="row">
+    <div class="col-md-4">
+      <div class="card d-flex flex-column align-items-center sticky">
+        <div class="avatar">
+          <div class="img">
+            <span class="material-symbols-rounded">person</span>
+          </div>
+        </div>
+        <div class="main-data">
+          <h2>{{auth.userProfile!.name}}</h2>
+          <p>{{auth.userProfile!.location}}</p>
+          <p class="mt-1">{{auth.userProfile!.experience[0]?.position || ''}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8" [formGroup]="formProfile">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Nome</mat-label>
+              <input matInput formControlName="name">
+              @if(formProfile.controls['name'].errors && formProfile.controls['name'].errors['required']) {
+              <mat-error>Campo obrigatório</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Cidade/UF</mat-label>
+              <input matInput formControlName="location">
+              @if(formProfile.controls['name'].errors && formProfile.controls['name'].errors['required']) {
+              <mat-error>Campo obrigatório</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Biografia</mat-label>
+              <textarea matInput formControlName="bio" rows="5"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div id="social-media-fields" class="row">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Website</mat-label>
+                  <input matInput formControlName="website">
+                </mat-form-field>
+              </div>
+              <ng-container formGroupName="social">
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Facebook</mat-label>
+                    <input matInput formControlName="facebook">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>LinkedIn</mat-label>
+                    <input matInput formControlName="linkedin">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Instagram</mat-label>
+                    <input matInput formControlName="instagram">
+                  </mat-form-field>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Experiences Form Array -->
+      <div class="card" formArrayName="experience">
+        <div class="row">
+          <div class="col-12 mb-3 d-flex justify-content-between">
+            <h5>Experiências</h5>
+            <span (click)="addExperience()" class="xp-button">
+              <span class="material-symbols-rounded me-1">add_circle</span>
+              Adicionar
+            </span>
+          </div>
+          @for(experience of experienceFormArray.controls; track experience.value.id){
+          <div class="col-12" [formGroupName]="$index" [class.border-bottom]="!$last" [class.mb-4]="!$last">
+            <div class="row">
+                <button mat-icon-button class="text-danger" (click)="removeExperience($index)">
+                  <span class="material-symbols-rounded">delete</span>
+                </button>
+              <div class="col">
+                <mat-form-field appearance="outline">
+                  <mat-label>Posição</mat-label>
+                  <input matInput formControlName="position">
+                </mat-form-field>
+              </div>
+              <div class="col-md-5">
+                <mat-form-field appearance="outline">
+                  <mat-label>Empresa</mat-label>
+                  <input matInput formControlName="company">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <mat-form-field appearance="outline">
+                  <mat-label>Descrição</mat-label>
+                  <textarea matInput formControlName="description" rows="5"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          }
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</app-page>

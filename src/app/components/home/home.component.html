@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <app-side-menu [class.open]="menuToggle" [(menuToggle)]="menuToggle"></app-side-menu>
+  <div class="content">
+    <app-header [(menuToggle)]="menuToggle"></app-header>
+    <div class="main-content">
+      <router-outlet/>
+    </div>
+  </div>
+</div>

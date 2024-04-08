@@ -1,0 +1,31 @@
+<div class="header">
+  <div class="d-flex align-items-center">
+    <span (click)="toggleMenu()" class="material-symbols-rounded menu">
+      @if(menuToggle){
+        menu_open
+      } @else{
+        menu
+      }
+    </span>
+  </div>
+
+  <div class="user-menu align-items-center d-flex" [cdkMenuTriggerFor]="userMenu" (cdkMenuClosed)="userMenuOpen = false" (cdkMenuOpened)="userMenuOpen = true">
+    <span class="material-symbols-rounded avatar">for_you</span>
+    <span>{{auth.userProfile?.name}}</span>
+    @if(userMenuOpen){
+      <span class="material-symbols-rounded">expand_less</span>
+    } @else {
+      <span class="material-symbols-rounded">expand_more</span>
+    }
+
+    <ng-template #userMenu>
+      <div class="user-menu-items" cdkMenu>
+        <span cdkMenuItem routerLink="/home/profile">Perfil</span>
+        <span cdkMenuItem (click)="logout()">Sair</span>
+      </div>
+
+    </ng-template>
+  </div>
+
+
+</div>

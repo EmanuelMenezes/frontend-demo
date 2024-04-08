@@ -1,0 +1,27 @@
+.page-header{
+  width: 100%;
+  padding: 2.5rem 1.875rem 7.5rem;
+  color: #fafafa;
+  background: rgb(120,178,255);
+  background: linear-gradient(103deg, rgba(120,178,255,1) 6%, rgba(199,0,255,1) 91%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2{
+    font-weight: 600;
+  }
+  h3{
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  border-radius: 0 0 20% 20%;
+}
+
+.page-content{
+  padding: 0 1.875rem;
+  background-color: #f1f1f1;
+  .top-overlap{
+    top: -6rem;
+    position: relative;
+  }
+}

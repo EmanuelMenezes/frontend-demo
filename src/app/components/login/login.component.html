@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="login-wrapper">
+    <img class="logo" src="assets/1.svg" alt="" height="50px">
+
+    <h2>Bem vindo,</h2>
+    <span>Acesse sua conta para continuar</span>
+
+    <form [formGroup]="loginForm">
+      <mat-form-field class="w-100">
+        <span matPrefix class="input-icon">
+          <span class="material-symbols-rounded">person</span>
+        </span>
+        <input matInput type="text" placeholder="Digite seu email" formControlName="email">
+        <mat-error></mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <span matPrefix class="input-icon">
+          <span class="material-symbols-rounded">lock</span>
+        </span>
+        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Digite sua senha" formControlName="password">
+        <span class="input-icon" style="cursor: pointer;" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <span class="material-symbols-rounded">{{hide ? 'visibility_off' : 'visibility'}}</span>
+        </span>
+      </mat-form-field>
+      <button mat-button class="w-100" (click)="onSubmit()" [disabled]="loginForm.invalid">Entrar</button>
+    </form>
+
+  </div>
+  <div class="disclaimer-content">
+
+  </div>
+</div>

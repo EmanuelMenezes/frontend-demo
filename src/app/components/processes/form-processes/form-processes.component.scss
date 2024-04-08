@@ -1,0 +1,24 @@
+::ng-deep.mdc-text-field{
+  border-radius: 12px !important;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+button#save{
+  background: #8E48E0;
+  color: #fff;
+  &:hover{
+    background: #7D3CBF;
+  }
+}
+button#back{
+  background: transparent;
+  color: #8E48E0;
+  border: 0.125rem solid #8E48E0;
+  &:hover{
+    border-color: #7D3CBF;
+    color: #7D3CBF;
+  }
+}

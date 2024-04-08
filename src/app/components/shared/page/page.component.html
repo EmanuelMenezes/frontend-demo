@@ -1,0 +1,14 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <div class="title">
+      <h2>{{title}}</h2>
+      <h3>{{subtitle}}</h3>
+    </div>
+    <ng-content select="[action]"></ng-content>
+  </div>
+  <div class="page-content">
+    <div class="top-overlap">
+      <ng-content select="[body]"></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<app-page title="Processos" subtitle="{{subtitle}}">
+  <div body>
+    <div class="card" [formGroup]="formProcesso">
+      <div class="row">
+        <div class="col-md-2">
+          <mat-form-field appearance="outline">
+            <mat-label>Número do Processo</mat-label>
+            <input matInput formControlName="processNumber" type="number">
+            @if(formProcesso.controls['processNumber'].errors && formProcesso.controls['processNumber'].errors['required']) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Tribunal</mat-label>
+            <mat-select formControlName="court">
+              @for(court of courtList; track $index){
+              <mat-option [value]="court">{{court}}</mat-option>
+              }
+            </mat-select>
+            @if(formProcesso.controls['court'].errors && formProcesso.controls['court'].errors['required']) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Área</mat-label>
+            <mat-select formControlName="area">
+              @for(area of areaList; track $index){
+              <mat-option [value]="area">{{area}}</mat-option>
+              }
+            </mat-select>
+            @if(formProcesso.controls['area'].errors && formProcesso.controls['area'].errors['required']) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Andamento do Processo</mat-label>
+            <mat-select formControlName="status">
+              @for(status of statusList; track $index){
+              <mat-option [value]="status.value">{{status.label}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <textarea matInput formControlName="description" rows="5"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12 d-flex justify-content-end">
+        <button type="button" id="back" mat-raised-button class="me-2" routerLink="/home/processes" >Voltar</button>
+        <button id="save" mat-raised-button (click)="saveProcess()" [disabled]="formProcesso.invalid" >Salvar</button>
+      </div>
+    </div>
+  </div>
+</app-page>

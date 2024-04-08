@@ -1,0 +1,27 @@
+<div class="menu-wrapper">
+  <div class="logo-wrapper">
+    <img class="logo" src="assets/1.svg" alt="">
+  </div>
+  <span class="material-symbols-rounded close-btn" (click)="toggleMenu()">close</span>
+
+  <div class="menu-items">
+    <div class="menu-item disabled">
+      <span class="material-symbols-rounded">home</span>
+      <span class="menu-item-text">Início</span>
+    </div>
+    <div class="menu-item" routerLink="/home/processes" routerLinkActive="router-link-active"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">
+      <span class="material-symbols-rounded">assignment</span>
+      <span class="menu-item-text">Processos</span>
+    </div>
+    <div class="menu-item"  routerLink="/home/manage" routerLinkActive="router-link-active"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">
+      <span class="material-symbols-rounded">view_kanban</span>
+      <span class="menu-item-text">Gerenciador</span>
+    </div>
+    <div class="menu-item"  routerLink="/home/profile" routerLinkActive="router-link-active"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">
+      <span class="material-symbols-rounded">person</span>
+      <span class="menu-item-text">Perfil</span>
+    </div>
+    <!-- <span class="material-symbols-rounded menu-item" routerLink="/home/processes">assignment</span>
+    <span class="material-symbols-rounded menu-item" routerLink="/home/contacts">contact_page</span> -->
+  </div>
+</div>

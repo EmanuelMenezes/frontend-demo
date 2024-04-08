@@ -1,0 +1,94 @@
+<app-page title="Gerenciador" subtitle="Andamento dos Processos">
+  <div body>
+    <div class="row">
+      <div class="col-2 d-none d-md-flex"></div>
+      <div class="col">
+        <div class="card list-container" id="to-do">
+          <h5>À Fazer</h5>
+          <div class="list" cdkDropList #todoList="cdkDropList" id="todo"  [cdkDropListData]="processesList.todo"
+            [cdkDropListConnectedTo]="[progList, completedList]" (cdkDropListDropped)="drop($event)">
+            @for(process of processesList.todo; track $index){
+            <div class="card status-border" cdkDrag [cdkDragData]="process">
+              <div class="info-box">
+                <label>N. Processo</label>
+                <span>{{process.processNumber}}</span>
+              </div>
+              <div class="info-box mt-2">
+                <label>Área</label>
+                <span>{{process.area}}</span>
+              </div>
+              <div class="info-box mt-2">
+                <label>Tribunal</label>
+                <span>{{process.court}}</span>
+              </div>
+              @if(process.description != ''){
+                <div class="info-box mt-2">
+                  <label>Descrição</label>
+                  <span>{{process.description | ellipsis: 50}}</span>
+                </div>
+              }
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card list-container" id="prog">
+          <h5>Em Andamento</h5>
+          <div class="list" cdkDropList #progList="cdkDropList" id="progress" [cdkDropListData]="processesList.progress"
+            [cdkDropListConnectedTo]="[todoList, completedList]" (cdkDropListDropped)="drop($event)">
+            @for(process of processesList.progress; track $index){
+            <div class="card status-border prog" cdkDrag [cdkDragData]="process">
+              <div class="info-box">
+                <label>N. Processo</label>
+                <span>{{process.processNumber}}</span>
+              </div>
+              <div class="info-box mt-2">
+                <label>Área</label>
+                <span>{{process.area}}</span>
+              </div>
+              <div class="info-box mt-2">
+                <label>Tribunal</label>
+                <span>{{process.court}}</span>
+              </div>
+              <div class="info-box mt-2">
+                <label>Descrição</label>
+                <span>{{process.description | ellipsis: 50}}</span>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card list-container" id="completed">
+          <h5>Finalizados</h5>
+          <div class="list" cdkDropList #completedList="cdkDropList" id="completed"  [cdkDropListData]="processesList.completed"
+            [cdkDropListConnectedTo]="[todoList, progList]" (cdkDropListDropped)="drop($event)">
+            @for(process of processesList.completed; track $index){
+            <div class="card status-border completed" cdkDrag [cdkDragData]="process">
+              <div class="info-box">
+                <label>N. Processo</label>
+                <span>{{process.processNumber}}</span>
+              </div>
+              <div class="info-box mt-2">
+                <label>Área</label>
+                <span>{{process.area}}</span>
+              </div>
+              <div class="info-box mt-2">
+                <label>Tribunal</label>
+                <span>{{process.court}}</span>
+              </div>
+              <div class="info-box mt-2">
+                <label>Descrição</label>
+                <span>{{process.description | ellipsis: 50}}</span>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="col-2 d-none d-md-flex"></div>
+    </div>
+  </div>
+</app-page>

@@ -1,0 +1,28 @@
+<div class="alert">
+  <span class="icon-wrapper">
+    @switch (data.type) {
+    @case ('success') {
+    <span class="material-symbols-rounded success">done</span>
+    }
+    @case ('info') {
+    <span class="material-symbols-rounded info">info_i</span>
+    }
+    @case ('warning') {
+    <span class="material-symbols-rounded warning">exclamation</span>
+    }
+    @case ('error') {
+    <span class="material-symbols-rounded error">close</span>
+    }
+    }
+  </span>
+  <p class="alert-message">{{ data.message }}</p>
+  <div class="alert-buttons">
+    @if(data.falsyButtonLabel){
+      <button id="falsy" class="alert-button" (click)="onFalsyButtonClicked()">{{ data.falsyButtonLabel }}</button>
+      }
+    @if(data.truthyButtonLabel){
+    <button id="truthy" class="alert-button" (click)="onTruthyButtonClicked()">{{ data.truthyButtonLabel }}</button>
+    }
+
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.card-menu{
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+}
+
+.card-menu-items{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 5rem;
+  background-color: #fff;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0 0.625rem rgba(0,0,0,0.08);
+
+  span{
+    color: #434343;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    &:hover{
+      background-color: #eee;
+    }
+  }
+}
+
+.actions{
+  text-align: center;
+}

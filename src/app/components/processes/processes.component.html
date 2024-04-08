@@ -1,0 +1,82 @@
+<app-page title="Processos" subtitle="Lista de Processos">
+  <button mat-raised-button action routerLink="/home/processes/new">Cadastrar</button>
+  <div body>
+    @if(isSmallScreen){
+    @for (process of processesList; track $index) {
+    <div class="card status-border"
+      [ngClass]="{'completed': process.status == 'completed', 'prog': process.status == 'progress'}">
+      <span class="material-symbols-rounded card-menu" [cdkMenuTriggerFor]="cardMenu">more_horiz</span>
+      <ng-template #cardMenu>
+        <div class="card-menu-items" cdkMenu>
+          <span cdkMenuItem [routerLink]="'/home/processes/'+process.id">Editar</span>
+          <span cdkMenuItem (click)="deleteProcess(process.id)">Excluir</span>
+        </div>
+      </ng-template>
+      <div class="info-box">
+        <label>N. Processo</label>
+        <span>{{process.processNumber}}</span>
+      </div>
+      <div class="info-box mt-2">
+        <label>Área</label>
+        <span>{{process.area}}</span>
+      </div>
+      <div class="info-box mt-2">
+        <label>Tribunal</label>
+        <span>{{process.court}}</span>
+      </div>
+      @if(process.description != ''){
+        <div class="info-box mt-2">
+          <label>Descrição</label>
+          <span>{{process.description | ellipsis: 50}}</span>
+        </div>
+      }
+    </div>
+    }
+    }@else {
+    <div class="card">
+      <div class="card-content">
+        <table mat-table [dataSource]="processesList">
+          @for (column of columns; track $index) {
+          <ng-container [matColumnDef]="column.columnDef">
+            <th mat-header-cell *matHeaderCellDef>{{column.header}}</th>
+            <td mat-cell *matCellDef="let process">{{column.cell(process) | ellipsis: 50}}</td>
+          </ng-container>
+          }
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let process">
+              @switch (process.status) {
+              @case ('todo') {
+              <span class="badge text-bg-dark">A fazer</span>
+              }
+              @case ('completed') {
+              <span class="badge text-bg-primary">Em Andamento</span>
+              }
+              @default {
+              <span class="badge text-bg-success">Finalizado</span>
+              }
+              }
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Actions</th>
+            <td mat-cell *matCellDef="let process" class="actions">
+              <button class="material-symbols-rounded" mat-icon-button [routerLink]="'/home/processes/'+process.id">
+                edit_note
+              </button>
+              <button class="material-symbols-rounded" mat-icon-button (click)="deleteProcess(process.id)">
+                delete_sweep
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </div>
+    }
+
+  </div>
+</app-page>
