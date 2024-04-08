@@ -5,7 +5,9 @@ Esse é um projeto de demonstração desenvolvido em Angular 17.3.2, utilizando 
 ## Requisitos
 
 Node.js v20
+
 Angular CLI 17.3.2
+
 Acesso à internet (dependências via CDN)
 
 ## Executar
@@ -19,8 +21,11 @@ Execute `ng serve` para iniciar o servidor de desenvolvimento. Navegue até `htt
 Para realizar o login, existem dois usuários cadastrados:
 
 email: john.doe@gmail.com
+
 senha: 1!JohnDoe
 
+
 email: jane.doe@gmail.com
+
 senha: 2!JaneDoe
 
