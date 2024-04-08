@@ -6,7 +6,7 @@ Esse é um projeto de demonstração desenvolvido em Angular 17.3.2, utilizando 
 
 Node.js v20
 Angular CLI 17.3.2
-Acesso à internet (google fonts/ bootstrap)
+Acesso à internet (dependências via CDN)
 
 ## Executar
 
